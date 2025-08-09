@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our 10-Year Journey</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: pink;
+      overflow-x: hidden;
+    }
+    .section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      font-size: 28px;
+      color: #800000;
+      margin: 0;
+    }
+    .scroll-arrow {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      animation: bounce 2s infinite;
+      color: #800000;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎵 Background music -->
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Scroll Down Arrow -->
+  <div class="scroll-arrow">⬇️</div>
+
+  <!-- Section 1 -->
+  <div class="section" style="background-color: #ffe6eb;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="aa1.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+      <img src="aa2.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+    </div>
+    <h2>Wow, it has been 10 years since these photos were taken!</h2>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" style="background-color: #ffc1cc;">
+    <img src="a2.jpg" alt="Me and my wife" style="width: 300px; height: auto; border-radius: 12px;" />
+    <h2>A lot has happened in the last 10 years...</h2>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" style="background-color: #ffb6c1;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="a3.jpg" style="width: 300px; height: auto; border-radius: 12px;" />
+      <img src="a5.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+      <img src="a4.jpg" style="width: 300px; height: auto; border-radius: 12px;" />
+    </div>
+    <h2>In 2015, Althea Adriane was born!</h2>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" style="background-color: #ff9999;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="a6.jpg" style="width:500px; height: auto; border-radius: 12px;" />
+      <img src="a7.jpeg" style="width: 500px; height: auto; border-radius: 12px;" />
+    </div>
+    <h2>2016 — just the two of us in Metro Manila!</h2>
+  </div>
+
+ 
+
+  <!-- Section 6 (renamed from previous Section 5) -->
+  <div class="section" style="background-color: #fc8eac;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="a8.jpeg" style="width:300px; height: auto; border-radius: 12px;" />
+      <img src="a9.jpeg" style="width: 500px; height: auto; border-radius: 12px;" />
+      <img src="a10.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+    </div>
+    <h2>2017-2018 — Althea joined us in Manila, and I had to go back to Libya...</h2>
+  </div>
+
+ <!-- Section 5 (NEW) -->
+  <div class="section" style="background-color: #ff7f99;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="a11.jpg" style="width: 400px; height: auto; border-radius: 12px;" />
+      <img src="a12.jpg" style="width: 600px; height: auto; border-radius: 12px;" />
+    </div>
+    <h2>In 2019–2020, our lives became more challenging due to the COVID-19 pandemic. Yet, amidst those trying times, a blessing came — Athena was born, and at last, our family was complete.</h2>
+  </div>
+
+<!-- Section 7 -->
+<div class="section" style="background-color: #ff6f91;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    <img src="family1.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+    <img src="family2.jpg" style="width: 500px; height: auto; border-radius: 12px;" />
+  </div>
+  <h2>Ten years passed in the blink of an eye. In that time, we’ve raised our two beautiful daughters, celebrated birthdays and milestones, shared simple joys over home-cooked meals(which mostly i prepared), and endured the sleepless nights of sickness and worry (mostly you hehe). We’ve weathered storms both the typhoons outside our home and the challenges within, worked hard to build our careers, managed tight budgets, climbed out of debts, and still found moments to laugh together. Through long rides, family trips, holiday gatherings, and quiet evenings when the girls were finally asleep, one thing has remained constant: I’m deeply grateful that, through every joy and struggle, I’ve had you by my side.</h2>
+</div>
+
+  <script>
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
+

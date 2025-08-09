@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10 Years of Being With You</title>
+  <style>
+    body {
+      background-color: pink;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin: 20px 0;
+      animation: fadeIn 2s ease;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: lightgray;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Confetti style */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="animation: fadeIn 1.5s;">How Long Have You Been Married?</h1>
+
+  <!-- 🖼️ Wedding Photo -->
+  <img src="Front 1.jpg" alt="Wedding Photo" />
+
+  <!-- 📅 Input -->
+  <label for="marriage-date">Enter your wedding date:</label><br/>
+  <input type="date" id="marriage-date" />
+  <button onclick="checkYears()">Submit</button>
+
+  <!-- 🎶 Background Music (optional) -->
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function checkYears() {
+      const dateInput = document.getElementById("marriage-date").value;
+      if (!dateInput) {
+        alert("Please select a valid wedding date.");
+        return;
+      }
+
+      const marriageDate = new Date(dateInput);
+      const today = new Date();
+
+      let years = today.getFullYear() - marriageDate.getFullYear();
+      const m = today.getMonth() - marriageDate.getMonth();
+      const d = today.getDate() - marriageDate.getDate();
+      if (m < 0 || (m === 0 && d < 0)) {
+        years--;
+      }
+
+      // Trigger confetti before redirect
+      launchConfetti();
+
+      setTimeout(() => {
+        window.location.href = `result.html?years=${years}`;
+      }, 2000); // Give confetti 2s before redirect
+    }
+
+    // 🎊 Confetti generator
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+
+    function getRandomColor() {
+      const colors = ["#FF69B4", "#FFD700", "#87CEFA", "#FFB6C1", "#98FB98"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
